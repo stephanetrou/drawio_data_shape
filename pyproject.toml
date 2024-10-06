@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "pydrawio_data_shape"
+version = "0.1.0"
+description = ""
+authors = ["Stéphane Trou <stephane.trou@stephane.trou>"]
+readme = "README.md"
+packages = [{ include = "pydrawio_data_shape" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+jinja2 = "^3.1.4"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.0"
+ruff = "^0.4.4"
+mypy = "^1.10.0"
+nox = "^2024.4.15"
+deptry = "^0.16.1"
+pytest-cov = "^4.1.0"
+mkdocs = "^1.6.0"
+approvaltests = "^8.4.1"
+mkdocstrings = "^0.25.1"
+mkdocs-material = "^9.5.23"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [ "E", "F", "UP", "B", "S", "SIM", "I" ]
+
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 80
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

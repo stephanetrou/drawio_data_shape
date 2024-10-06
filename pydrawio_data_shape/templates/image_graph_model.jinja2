@@ -1,0 +1,7 @@
+{% extends "graph_model.jinja2" %}
+{% block source_overview %}
+    {% set style = model.style  %}
+    <mxCell id="7" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image={{ style.image }};outlineConnect=0;fontStyle=0;allowArrows=0;connectable=0;recursiveResize=0;expand=0;resizable=0;" vertex="1" parent="2">
+			<mxGeometry x="11" y="5.319999999999986" width="{{ style.width }}" height="{{ style.height }}" as="geometry"/>
+    </mxCell>
+{% endblock %}

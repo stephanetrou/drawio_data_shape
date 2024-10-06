@@ -1,0 +1,46 @@
+<shape h="{{ stencil.height }}" w="{{ stencil.width }}" aspect="fixed">
+    <connections>
+        <constraint x="0" y="0" perimeter="1" />
+        <constraint x="0.25" y="0" perimeter="1" />
+        <constraint x="0.5" y="0" perimeter="1" />
+        <constraint x="0.75" y="0" perimeter="1" />
+        <constraint x="1" y="0" perimeter="1" />
+        <constraint x="1" y="0.25" perimeter="1" />
+        <constraint x="1" y="0.5" perimeter="1" />
+        <constraint x="1" y="0.75" perimeter="1" />
+        <constraint x="1" y="1" perimeter="1" />
+        <constraint x="0.75" y="1" perimeter="1" />
+        <constraint x="0.5" y="1" perimeter="1" />
+        <constraint x="0.25" y="1" perimeter="1" />
+        <constraint x="0" y="1" perimeter="1" />
+        <constraint x="0" y="0.75" perimeter="1" />
+        <constraint x="0" y="0.5" perimeter="1" />
+        <constraint x="0" y="0.25" perimeter="1" />
+    </connections>
+    <foreground>
+        {# Remove outline of shape #}
+        <strokewidth fixed="0" />
+        {# Render external shape  #}
+        <roundrect x="0" y="0" h="{{ stencil.height }}" w="{{ stencil.width }}" />
+        <fill />  {# Use color from fillcolor in style  #}
+
+        {# Render internal shape  #}
+        <fillcolor color="#FFFFFF" />
+        <roundrect x="5" y="0" h="{{ stencil.height }}" w="{{ stencil.width - 5 }}" />
+        <fill />
+
+        {# Render Image / Logo block  #}
+        <fillcolor color="#FAFAFA" />
+        <rect x="8" y="3" h="18" w="18" />
+        <fill />
+
+        {# Render Line  #}
+        <strokewidth width="1" />
+        <strokecolor color="#FAFAFA" />
+        <path>
+            <move x="8" y="{{ stencil.height / 2 }}" />
+            <line x="{{ stencil.width - 5}}" y="{{ stencil.height / 2 }}" />
+        </path>
+        <stroke />
+    </foreground>
+</shape>
