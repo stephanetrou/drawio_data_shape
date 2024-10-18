@@ -54,7 +54,7 @@ MX_GRAPH_MODELS = [
     MxGraphModel(
         "source athena", COLOR.SOURCE, "Source Athena", AWSStyle(20, 20, "mxgraph.aws4.athena", COLOR.AWS_ANALYTICS)
     ),
-    MxGraphModel("consumer api", COLOR.SOURCE, "Consumer API", ImageStyle(20, 16, "img/lib/mscae/API_Management.svg")),
+    MxGraphModel("Source api", COLOR.SOURCE, "Source API", ImageStyle(15, 19, "img/lib/mscae/API_Management.svg")),
     # Models
     MxGraphModel("model S3", COLOR.MODEL, "Model S3", AWSStyle(20, 20, "mxgraph.aws4.s3", COLOR.AWS_STORAGE)),
     MxGraphModel("model rds", COLOR.MODEL, "Model RDS", AWSStyle(20, 20, "mxgraph.aws4.rds", COLOR.AWS_DATABASE)),
