@@ -9,3 +9,7 @@ class COLOR(StrEnum):
     AWS_STORAGE = "#7AA116"
     AWS_DATABASE = "#C925D1"
     AWS_ANALYTICS = "#8C4FFF"
+
+    ORACLE = "#DA4026"
+
+    CUBE_BLUE = "#2072B8"
