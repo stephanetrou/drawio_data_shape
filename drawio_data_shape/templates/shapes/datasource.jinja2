@@ -1,4 +1,4 @@
-<shape h="{{ stencil.height }}" w="{{ stencil.width + 2}}" aspect="fixed">
+<shape h="{{ shape.height }}" w="{{ shape.width + 2}}" aspect="fixed">
     <connections>
         <constraint x="0" y="0" perimeter="1" />
         <constraint x="0.25" y="0" perimeter="1" />
@@ -18,15 +18,15 @@
         <constraint x="0" y="0.25" perimeter="1" />
     </connections>
     <foreground>
-        {# Remove outline of shape #}
+        {# Remove outline of shapes #}
         <strokewidth fixed="0" />
-        {# Render external shape  #}
-        <roundrect x="0" y="0" h="{{ stencil.height }}" w="{{ stencil.width }}" arcsize="12"/>
+        {# Render external shapes  #}
+        <roundrect x="0" y="0" h="{{ shape.height }}" w="{{ shape.width }}" arcsize="12"/>
         <fill />  {# Use color from fillcolor in style  #}
 
-        {# Render internal shape  #}
+        {# Render internal shapes  #}
         <fillcolor color="#FFFFFF" />
-        <roundrect x="7" y="0" h="{{ stencil.height }}" w="{{ stencil.width - 5 }}" arcsize="15"/>
+        <roundrect x="7" y="0" h="{{ shape.height }}" w="{{ shape.width - 5 }}" arcsize="15"/>
         <fill />
 
         {# Render Image / Logo block  #}
@@ -38,8 +38,8 @@
         <strokewidth width="1" />
         <strokecolor color="#FAFAFA" />
         <path>
-            <move x="10" y="{{ stencil.height / 2 }}" />
-            <line x="{{ stencil.width - 7}}" y="{{ stencil.height / 2 }}" />
+            <move x="10" y="{{ shape.height / 2 }}" />
+            <line x="{{ shape.width - 7}}" y="{{ shape.height / 2 }}" />
         </path>
         <stroke />
     </foreground>

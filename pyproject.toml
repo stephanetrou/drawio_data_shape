@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "pydrawio_data_shape"
+name = "drawio_data_shape"
 version = "0.1.0"
 description = ""
 authors = ["Stéphane Trou <stephane.trou@stephane.trou>"]
 readme = "README.md"
-packages = [{ include = "pydrawio_data_shape" }]
+packages = [{ include = "drawio_data_shape" }]
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -32,6 +32,8 @@ select = [ "E", "F", "UP", "B", "S", "SIM", "I" ]
 docstring-code-format = true
 docstring-code-line-length = 80
 
+[tool.mypy]
+ignore_missing_imports = true
 
 [build-system]
 requires = ["poetry-core"]

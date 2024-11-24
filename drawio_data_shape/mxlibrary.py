@@ -4,21 +4,22 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Any, Dict, List
 
-from pydrawio_data_shape.model import MX_GRAPH_MODELS, AWSStyle, ImageStyle, MxGraphModel, Style
-from pydrawio_data_shape.stencil import Stencil, generate_stencil
-from pydrawio_data_shape.templating import ENVIRONMENT
+from drawio_data_shape.datasource_container import DatasourceContainer
+from drawio_data_shape.model import MX_GRAPH_MODELS, Datasource, IconDatasource, ImageDatasource, TemplateDetails
+from drawio_data_shape.mx.xml_visitor import XMLVisitor
+from drawio_data_shape.templating import ENVIRONMENT
 
 
-def get_template(style: Style) -> str:
-    if isinstance(style, AWSStyle):
+def get_template(style: Datasource) -> str:
+    if isinstance(style, IconDatasource):
         return "aws_graph_model.jinja2"
-    if isinstance(style, ImageStyle):
+    if isinstance(style, ImageDatasource):
         return "image_graph_model.jinja2"
 
     raise ValueError(f"Unknown style {style.__class__}")
 
 
-def render_template(model: MxGraphModel, stencil_content: str) -> str:
+def render_template(model: TemplateDetails, stencil_content: str) -> str:
     template_name = get_template(model.style)
     template = ENVIRONMENT.get_template(template_name)
 
@@ -26,20 +27,24 @@ def render_template(model: MxGraphModel, stencil_content: str) -> str:
     return rendered
 
 
-def create_library(models: List[MxGraphModel]) -> None:
+def create_library(models: List[TemplateDetails]) -> None:
     library: List[Dict[str, Any]] = []
 
     for model in models:
         entry: Dict[str, Any] = {}
 
-        stencil = generate_stencil(Stencil(model.width, model.height))
-        rendered = render_template(model, stencil)
+        container = DatasourceContainer()
+        graph_model = container.build(model)
+
+        xml_visitor = XMLVisitor()
+        xml_visitor.visitMxGraphModel(graph_model)
+        pretty_xml = xml_visitor.xml_str()
 
         entry["title"] = model.title
         entry["h"] = model.height
         entry["w"] = model.width
         entry["aspect"] = model.aspect
-        entry["xml"] = re.sub(r"[\t\n]", "", rendered)
+        entry["xml"] = re.sub(r"[\t\n]", "", pretty_xml)
 
         library.append(entry)
 

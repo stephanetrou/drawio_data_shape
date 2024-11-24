@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<mxGraphModel>
+	<root>
+		<mxCell id="0"/>
+		<mxCell id="1" parent="0"/>
+		<mxCell id="2" value="Hi !!" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Verdana;fontSize=9;strokeColor=none;fillColor=#535C71;fontColor=#FFFFFF">
+			<mxGeometry width="26" height="12" as="geometry"/>
+		</mxCell>
+	</root>
+</mxGraphModel>
