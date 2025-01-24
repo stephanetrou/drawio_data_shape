@@ -80,3 +80,23 @@ MX_GRAPH_MODELS = [
     TemplateDetails("consumer api", COLOR.CONSUMER, "Consumer API", AzureThemes.API),
     TemplateDetails("consumer sql server", COLOR.CONSUMER, "Consumer SQL Server", AzureThemes.SQL_SERVER),
 ]
+
+
+@dataclass(frozen=True)
+class MedallionTemplate:
+    title: str
+    shape_color: COLOR
+    width: int = 16
+    height: int = 16
+    aspect: str = "fixed"
+
+
+MEDALLIONS = [
+    MedallionTemplate("Bronze", COLOR.BRONZE),
+    # MedallionTemplate("Dark Bronze", COLOR.DARK_BRONZE),
+    MedallionTemplate("Silver", COLOR.SILVER),
+    MedallionTemplate("Gold", COLOR.GOLD),
+    # MedallionTemplate("Platinum", COLOR.PLATINUM),
+    MedallionTemplate("Diamond", COLOR.DIAMOND),
+    # MedallionTemplate("Light Diamond", COLOR.LIGHT_DIAMOND),
+]

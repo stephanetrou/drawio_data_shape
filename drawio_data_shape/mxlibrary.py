@@ -5,7 +5,16 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from drawio_data_shape.datasource_container import DatasourceContainer
-from drawio_data_shape.model import MX_GRAPH_MODELS, Datasource, IconDatasource, ImageDatasource, TemplateDetails
+from drawio_data_shape.medallion import Medallion
+from drawio_data_shape.model import (
+    MEDALLIONS,
+    MX_GRAPH_MODELS,
+    Datasource,
+    IconDatasource,
+    ImageDatasource,
+    MedallionTemplate,
+    TemplateDetails,
+)
 from drawio_data_shape.mx.xml_visitor import XMLVisitor
 from drawio_data_shape.templating import ENVIRONMENT
 
@@ -27,9 +36,10 @@ def render_template(model: TemplateDetails, stencil_content: str) -> str:
     return rendered
 
 
-def create_library(models: List[TemplateDetails]) -> None:
+def create_library(models: List[TemplateDetails], medallions: List[MedallionTemplate]) -> None:
     library: List[Dict[str, Any]] = []
 
+    # Generate DataSources
     for model in models:
         entry: Dict[str, Any] = {}
 
@@ -48,6 +58,24 @@ def create_library(models: List[TemplateDetails]) -> None:
 
         library.append(entry)
 
+    for medallion in medallions:
+        entry: Dict[str, Any] = {}
+
+        container = Medallion()
+        graph_model = container.build(medallion)
+
+        xml_visitor = XMLVisitor()
+        xml_visitor.visitMxGraphModel(graph_model)
+        pretty_xml = xml_visitor.xml_str()
+
+        entry["title"] = medallion.title
+        entry["h"] = medallion.height
+        entry["w"] = medallion.width
+        entry["aspect"] = medallion.aspect
+        entry["xml"] = re.sub(r"[\t\n]", "", pretty_xml)
+
+        library.append(entry)
+
     res = json.dumps(library, indent=4)
     root = ET.Element("mxlibrary")
     root.text = res
@@ -58,4 +86,4 @@ def create_library(models: List[TemplateDetails]) -> None:
 
 
 if __name__ == "__main__":
-    create_library(MX_GRAPH_MODELS)
+    create_library(MX_GRAPH_MODELS, MEDALLIONS)
