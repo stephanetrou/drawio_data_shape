@@ -1,7 +1,7 @@
-from drawio_data_shape.model import IconDatasource, ImageDatasource, TemplateDetails
+from drawio_data_shape.library_models import DatasourceTemplate, IconDatasource, ImageDatasource
 from drawio_data_shape.models.shape import ShapeInformation, generate_encoded_shape
-from drawio_data_shape.mx.models import MxCell, MxGeometry, MxGraphModel, MxObject, MxRectangle, UserObject
-from drawio_data_shape.mx.style import StyleBuilder
+from drawio_data_shape.mx.mxmodels import MxCell, MxGeometry, MxGraphModel, MxObject, MxRectangle, UserObject
+from drawio_data_shape.mx.mxstyle import StyleBuilder
 
 
 class DatasourceContainer:
@@ -12,7 +12,7 @@ class DatasourceContainer:
         self.next_id += 1
         return self.next_id
 
-    def build(self, template_detail: TemplateDetails) -> MxGraphModel:
+    def build(self, template_detail: DatasourceTemplate) -> MxGraphModel:
         mx_graph_model = MxGraphModel()
 
         cell_0 = MxCell(self._get_next_id())
@@ -72,7 +72,7 @@ class DatasourceContainer:
 
         return cell
 
-    def _generate_box(self, template_detail: TemplateDetails) -> MxObject:
+    def _generate_box(self, template_detail: DatasourceTemplate) -> MxObject:
         shape_information = ShapeInformation("datasource", template_detail.height, template_detail.width)
         shape = generate_encoded_shape(shape_information)
 

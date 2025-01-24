@@ -2,79 +2,38 @@ import json
 import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict
 
-from drawio_data_shape.datasource_container import DatasourceContainer
-from drawio_data_shape.medallion import Medallion
-from drawio_data_shape.model import (
+from drawio_data_shape.library_models import (
+    DATASOURCES,
     MEDALLIONS,
-    MX_GRAPH_MODELS,
-    Datasource,
-    IconDatasource,
-    ImageDatasource,
-    MedallionTemplate,
-    TemplateDetails,
 )
 from drawio_data_shape.mx.xml_visitor import XMLVisitor
-from drawio_data_shape.templating import ENVIRONMENT
+from drawio_data_shape.shape.datasource_container import DatasourceContainer
+from drawio_data_shape.shape.medallion import Medallion
 
 
-def get_template(style: Datasource) -> str:
-    if isinstance(style, IconDatasource):
-        return "aws_graph_model.jinja2"
-    if isinstance(style, ImageDatasource):
-        return "image_graph_model.jinja2"
+def map_to_library_entry(template, genarator) -> Dict[str, Any]:
+    entry: Dict[str, Any] = {}
 
-    raise ValueError(f"Unknown style {style.__class__}")
+    graph_model = genarator.build(template)
+
+    xml_visitor = XMLVisitor()
+    xml_visitor.visitMxGraphModel(graph_model)
+    pretty_xml = xml_visitor.xml_str()
+
+    entry["title"] = template.title
+    entry["h"] = template.height
+    entry["w"] = template.width
+    entry["aspect"] = template.aspect
+    entry["xml"] = re.sub(r"[\t\n]", "", pretty_xml)
+
+    return entry
 
 
-def render_template(model: TemplateDetails, stencil_content: str) -> str:
-    template_name = get_template(model.style)
-    template = ENVIRONMENT.get_template(template_name)
-
-    rendered = template.render(model=model, stencil=stencil_content)
-    return rendered
-
-
-def create_library(models: List[TemplateDetails], medallions: List[MedallionTemplate]) -> None:
-    library: List[Dict[str, Any]] = []
-
-    # Generate DataSources
-    for model in models:
-        entry: Dict[str, Any] = {}
-
-        container = DatasourceContainer()
-        graph_model = container.build(model)
-
-        xml_visitor = XMLVisitor()
-        xml_visitor.visitMxGraphModel(graph_model)
-        pretty_xml = xml_visitor.xml_str()
-
-        entry["title"] = model.title
-        entry["h"] = model.height
-        entry["w"] = model.width
-        entry["aspect"] = model.aspect
-        entry["xml"] = re.sub(r"[\t\n]", "", pretty_xml)
-
-        library.append(entry)
-
-    for medallion in medallions:
-        entry: Dict[str, Any] = {}
-
-        container = Medallion()
-        graph_model = container.build(medallion)
-
-        xml_visitor = XMLVisitor()
-        xml_visitor.visitMxGraphModel(graph_model)
-        pretty_xml = xml_visitor.xml_str()
-
-        entry["title"] = medallion.title
-        entry["h"] = medallion.height
-        entry["w"] = medallion.width
-        entry["aspect"] = medallion.aspect
-        entry["xml"] = re.sub(r"[\t\n]", "", pretty_xml)
-
-        library.append(entry)
+def create_library() -> None:
+    library = [map_to_library_entry(model, DatasourceContainer()) for model in DATASOURCES]
+    library += [map_to_library_entry(model, Medallion()) for model in MEDALLIONS]
 
     res = json.dumps(library, indent=4)
     root = ET.Element("mxlibrary")
@@ -86,4 +45,4 @@ def create_library(models: List[TemplateDetails], medallions: List[MedallionTemp
 
 
 if __name__ == "__main__":
-    create_library(MX_GRAPH_MODELS, MEDALLIONS)
+    create_library()

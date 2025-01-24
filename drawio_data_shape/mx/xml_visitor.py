@@ -4,7 +4,7 @@ from dataclasses import asdict
 from typing import Any
 from xml.etree import ElementTree as ET
 
-from drawio_data_shape.mx.models import (
+from drawio_data_shape.mx.mxmodels import (
     MxCell,
     MxGeometry,
     MxGraphModel,

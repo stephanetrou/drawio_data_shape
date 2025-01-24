@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from drawio_data_shape.deflate_tools import encode
-from drawio_data_shape.templating import ENVIRONMENT
+from drawio_data_shape.templates.configuration import ENVIRONMENT
+from drawio_data_shape.tools.deflate_tools import encode
 
 
 @dataclass(frozen=True)

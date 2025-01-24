@@ -1,11 +1,11 @@
 from approvaltests import verify_xml
 
-from drawio_data_shape.color import COLOR
-from drawio_data_shape.datasource_container import DatasourceContainer
-from drawio_data_shape.model import AWSThemes, TemplateDetails
-from drawio_data_shape.mx.models import MxCell, MxGeometry, MxGraphModel, MxRectangle, UserObject
-from drawio_data_shape.mx.style import StyleBuilder
+from drawio_data_shape.library_models import AWSThemes, DatasourceTemplate
+from drawio_data_shape.mx.mxmodels import MxCell, MxGeometry, MxGraphModel, MxRectangle, UserObject
+from drawio_data_shape.mx.mxstyle import StyleBuilder
 from drawio_data_shape.mx.xml_visitor import XMLVisitor
+from drawio_data_shape.shape.color import COLOR
+from drawio_data_shape.shape.datasource_container import DatasourceContainer
 
 
 def test_mx_cell_empty():
@@ -104,7 +104,7 @@ def test_simple_shape():
 
 
 def test_datasource_shape():
-    template_detail = TemplateDetails("source S3", COLOR.SOURCE, "Source S3", AWSThemes.S3)
+    template_detail = DatasourceTemplate("source S3", COLOR.SOURCE, "Source S3", AWSThemes.S3)
 
     container = DatasourceContainer()
     graph_model = container.build(template_detail)

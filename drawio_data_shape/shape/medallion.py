@@ -1,7 +1,7 @@
-from drawio_data_shape.model import MedallionTemplate
+from drawio_data_shape.library_models import MedallionTemplate
 from drawio_data_shape.models.shape import ShapeInformation, generate_encoded_shape
-from drawio_data_shape.mx.models import MxCell, MxGeometry, MxGraphModel, MxObject, MxRectangle
-from drawio_data_shape.mx.style import StyleBuilder
+from drawio_data_shape.mx.mxmodels import MxCell, MxGeometry, MxGraphModel, MxObject, MxRectangle
+from drawio_data_shape.mx.mxstyle import StyleBuilder
 
 
 class Medallion:

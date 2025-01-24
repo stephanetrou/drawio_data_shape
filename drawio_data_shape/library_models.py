@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from drawio_data_shape.color import COLOR
+from drawio_data_shape.shape.color import COLOR
 
 
 @dataclass(frozen=True)
@@ -44,7 +44,7 @@ class AzureThemes:
 
 
 @dataclass(frozen=True)
-class TemplateDetails:
+class DatasourceTemplate:
     title: str
     shape_color: COLOR
     placeholder: str
@@ -54,31 +54,31 @@ class TemplateDetails:
     aspect: str = "fixed"
 
 
-MX_GRAPH_MODELS = [
+DATASOURCES = [
     # Sources
-    TemplateDetails("source S3", COLOR.SOURCE, "Source S3", AWSThemes.S3),
-    TemplateDetails("source rds", COLOR.SOURCE, "Source RDS", AWSThemes.RDS),
-    TemplateDetails("source redshift", COLOR.SOURCE, "Source Redshift", AWSThemes.REDSHIFT),
-    TemplateDetails("source dynamodb", COLOR.SOURCE, "Source DynamoDB", AWSThemes.DYNAMODB),
-    TemplateDetails("source glue", COLOR.SOURCE, "Source Glue", AWSThemes.GLUE),
-    TemplateDetails("source athena", COLOR.SOURCE, "Source Athena", AWSThemes.ATHENA),
-    TemplateDetails("Source api", COLOR.SOURCE, "Source API", AzureThemes.API),
-    TemplateDetails("source blob storage", COLOR.SOURCE, "Source Blob Storage", AzureThemes.BLOB),
-    TemplateDetails(
+    DatasourceTemplate("source S3", COLOR.SOURCE, "Source S3", AWSThemes.S3),
+    DatasourceTemplate("source rds", COLOR.SOURCE, "Source RDS", AWSThemes.RDS),
+    DatasourceTemplate("source redshift", COLOR.SOURCE, "Source Redshift", AWSThemes.REDSHIFT),
+    DatasourceTemplate("source dynamodb", COLOR.SOURCE, "Source DynamoDB", AWSThemes.DYNAMODB),
+    DatasourceTemplate("source glue", COLOR.SOURCE, "Source Glue", AWSThemes.GLUE),
+    DatasourceTemplate("source athena", COLOR.SOURCE, "Source Athena", AWSThemes.ATHENA),
+    DatasourceTemplate("Source api", COLOR.SOURCE, "Source API", AzureThemes.API),
+    DatasourceTemplate("source blob storage", COLOR.SOURCE, "Source Blob Storage", AzureThemes.BLOB),
+    DatasourceTemplate(
         "source sql data warehouse", COLOR.SOURCE, "Source SQL Data Warehouse", AzureThemes.SQL_DATA_WAREHOUSE
     ),
-    TemplateDetails("source sql server", COLOR.SOURCE, "Source SQL Server", AzureThemes.SQL_SERVER),
-    TemplateDetails("source oracle", COLOR.SOURCE, "Source Oracle", OnPremTheme.ORACLE),
+    DatasourceTemplate("source sql server", COLOR.SOURCE, "Source SQL Server", AzureThemes.SQL_SERVER),
+    DatasourceTemplate("source oracle", COLOR.SOURCE, "Source Oracle", OnPremTheme.ORACLE),
     # Models
-    TemplateDetails("model S3", COLOR.MODEL, "Model S3", AWSThemes.S3),
-    TemplateDetails("model rds", COLOR.MODEL, "Model RDS", AWSThemes.RDS),
-    TemplateDetails("model redshift", COLOR.MODEL, "Model Redshift", AWSThemes.REDSHIFT),
-    TemplateDetails("model dynamodb", COLOR.MODEL, "Model DynamoDB", AWSThemes.DYNAMODB),
+    DatasourceTemplate("model S3", COLOR.MODEL, "Model S3", AWSThemes.S3),
+    DatasourceTemplate("model rds", COLOR.MODEL, "Model RDS", AWSThemes.RDS),
+    DatasourceTemplate("model redshift", COLOR.MODEL, "Model Redshift", AWSThemes.REDSHIFT),
+    DatasourceTemplate("model dynamodb", COLOR.MODEL, "Model DynamoDB", AWSThemes.DYNAMODB),
     # Consumers
-    TemplateDetails("consumer powerbi", COLOR.CONSUMER, "Consumer PowerBI", AzureThemes.POWER_BI),
-    TemplateDetails("consumer cube blue", COLOR.CONSUMER, "Cube", AzureThemes.CUBE_BLUE),
-    TemplateDetails("consumer api", COLOR.CONSUMER, "Consumer API", AzureThemes.API),
-    TemplateDetails("consumer sql server", COLOR.CONSUMER, "Consumer SQL Server", AzureThemes.SQL_SERVER),
+    DatasourceTemplate("consumer powerbi", COLOR.CONSUMER, "Consumer PowerBI", AzureThemes.POWER_BI),
+    DatasourceTemplate("consumer cube blue", COLOR.CONSUMER, "Cube", AzureThemes.CUBE_BLUE),
+    DatasourceTemplate("consumer api", COLOR.CONSUMER, "Consumer API", AzureThemes.API),
+    DatasourceTemplate("consumer sql server", COLOR.CONSUMER, "Consumer SQL Server", AzureThemes.SQL_SERVER),
 ]
 
 
