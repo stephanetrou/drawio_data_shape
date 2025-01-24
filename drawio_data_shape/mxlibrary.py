@@ -81,7 +81,7 @@ def create_library(models: List[TemplateDetails], medallions: List[MedallionTemp
     root.text = res
     tree = ET.ElementTree(root)
 
-    path = Path(__file__).parent.resolve() / "data_library.xml"
+    path = Path(__file__).parent.resolve() / "pydrawio_data_library.xml"
     tree.write(path)
 
 

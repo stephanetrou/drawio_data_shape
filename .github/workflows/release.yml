@@ -32,4 +32,4 @@ jobs:
       id: create_release
       uses: softprops/action-gh-release@v2
       with:
-        files: ./drawio_data_shape/data_library.xml
+        files: ./drawio_data_shape/pydrawio_data_library.xml
