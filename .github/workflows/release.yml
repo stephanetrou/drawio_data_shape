@@ -26,10 +26,10 @@ jobs:
         poetry install
 
     - name: Run script
-      run: poetry run python pydrawio_data_shape/mxlibrary.py
+      run: poetry run python drawio_data_shape/mxlibrary.py
 
     - name: Upload Release
       id: create_release
       uses: softprops/action-gh-release@v2
       with:
-        files: ./pydrawio_data_shape/data_library.xml
+        files: ./drawio_data_shape/pydrawio_data_library.xml

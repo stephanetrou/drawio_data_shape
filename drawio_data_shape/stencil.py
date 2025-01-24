@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from pydrawio_data_shape.deflate_tools import encode
-from pydrawio_data_shape.templating import ENVIRONMENT
+from drawio_data_shape.deflate_tools import encode
+from drawio_data_shape.templating import ENVIRONMENT
 
 
 @dataclass(frozen=True)
@@ -11,7 +11,7 @@ class Stencil:
 
 
 def generate_stencil(stencil: Stencil) -> str:
-    template = ENVIRONMENT.get_template("stencil.jinja2")
+    template = ENVIRONMENT.get_template("datasource.jinja2")
     content = template.render(stencil=stencil)
 
     encoded = encode(content)

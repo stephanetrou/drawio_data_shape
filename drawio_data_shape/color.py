@@ -2,6 +2,8 @@ from enum import StrEnum
 
 
 class COLOR(StrEnum):
+    DEFAULT_COLOR = "#535C71"
+
     SOURCE = "#60A917"
     MODEL = "#1BA1E2"
     CONSUMER = "#6A00FF"
@@ -11,5 +13,12 @@ class COLOR(StrEnum):
     AWS_ANALYTICS = "#8C4FFF"
 
     ORACLE = "#DA4026"
-
     CUBE_BLUE = "#2072B8"
+
+    BRONZE = "#F0A30A"
+    DARK_BRONZE = "#CD7F32"
+    SILVER = "#C0C0C0"
+    GOLD = "#FFD700"
+    PLATINUM = "#E5E4E2"
+    DIAMOND = "#70D1F4"
+    LIGHT_DIAMOND = "#B9F2FF"
