@@ -46,8 +46,8 @@ class DatasourceContainer:
         label.parent = box.id
         mx_graph_model.append(label)
 
-        icon_datasource = self._generate_icon_datasource(template_detail.style)
-        icon_datasource.parent = box.id
+        icon_datasource = self._generate_icon_datasource(template_detail.style, template_detail.tooltip)
+        icon_datasource.cell.parent = box.id
         mx_graph_model.append(icon_datasource)
 
         return mx_graph_model
@@ -227,12 +227,17 @@ class DatasourceContainer:
         cell = MxCell(id=self._get_next_id(), value=placeholder, style=style, geometry=geometry, vertex=True)
         return cell
 
-    def _generate_icon_datasource(self, style_icon) -> MxCell:
+    def _generate_icon_datasource(self, style_icon, tooltip) -> UserObject:
         style = self._generate_style_icon(style_icon)
         geometry = MxGeometry(x=15, y=5, width=style_icon.width, height=style_icon.height)
 
-        cell = MxCell(id=self._get_next_id(), value="", style=style.build(), geometry=geometry, vertex=True)
-        return cell
+        user_object = UserObject(id=self._get_next_id(), tooltip=tooltip, label="")
+
+        cell = MxCell(style=style.build(), geometry=geometry, vertex=True)
+
+        user_object.cell = cell
+
+        return user_object
 
     def _generate_style_icon(self, style_icon) -> StyleBuilder:
         if isinstance(style_icon, IconDatasource):

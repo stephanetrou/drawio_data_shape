@@ -49,6 +49,7 @@ class DatasourceTemplate:
     shape_color: COLOR
     placeholder: str
     style: Datasource
+    tooltip: str = ""
     width: int = 210
     height: int = 70
     aspect: str = "fixed"
@@ -56,29 +57,35 @@ class DatasourceTemplate:
 
 DATASOURCES = [
     # Sources
-    DatasourceTemplate("source S3", COLOR.SOURCE, "Source S3", AWSThemes.S3),
-    DatasourceTemplate("source rds", COLOR.SOURCE, "Source RDS", AWSThemes.RDS),
-    DatasourceTemplate("source redshift", COLOR.SOURCE, "Source Redshift", AWSThemes.REDSHIFT),
-    DatasourceTemplate("source dynamodb", COLOR.SOURCE, "Source DynamoDB", AWSThemes.DYNAMODB),
-    DatasourceTemplate("source glue", COLOR.SOURCE, "Source Glue", AWSThemes.GLUE),
-    DatasourceTemplate("source athena", COLOR.SOURCE, "Source Athena", AWSThemes.ATHENA),
-    DatasourceTemplate("Source api", COLOR.SOURCE, "Source API", AzureThemes.API),
-    DatasourceTemplate("source blob storage", COLOR.SOURCE, "Source Blob Storage", AzureThemes.BLOB),
+    DatasourceTemplate("source S3", COLOR.SOURCE, "Source S3", AWSThemes.S3, "S3"),
+    DatasourceTemplate("source rds", COLOR.SOURCE, "Source RDS", AWSThemes.RDS, "RDS"),
+    DatasourceTemplate("source redshift", COLOR.SOURCE, "Source Redshift", AWSThemes.REDSHIFT, "Redshift"),
+    DatasourceTemplate("source dynamodb", COLOR.SOURCE, "Source DynamoDB", AWSThemes.DYNAMODB, "DynamoDB"),
+    DatasourceTemplate("source glue", COLOR.SOURCE, "Source Glue", AWSThemes.GLUE, "Glue Metastore"),
+    DatasourceTemplate("source athena", COLOR.SOURCE, "Source Athena", AWSThemes.ATHENA, "Athena"),
+    DatasourceTemplate("Source api", COLOR.SOURCE, "Source API", AzureThemes.API, "API"),
+    DatasourceTemplate("source blob storage", COLOR.SOURCE, "Source Blob Storage", AzureThemes.BLOB, "Blob"),
     DatasourceTemplate(
-        "source sql data warehouse", COLOR.SOURCE, "Source SQL Data Warehouse", AzureThemes.SQL_DATA_WAREHOUSE
+        "source sql data warehouse",
+        COLOR.SOURCE,
+        "Source SQL Data Warehouse",
+        AzureThemes.SQL_DATA_WAREHOUSE,
+        "SQL Data Warehouse",
     ),
-    DatasourceTemplate("source sql server", COLOR.SOURCE, "Source SQL Server", AzureThemes.SQL_SERVER),
-    DatasourceTemplate("source oracle", COLOR.SOURCE, "Source Oracle", OnPremTheme.ORACLE),
+    DatasourceTemplate("source sql server", COLOR.SOURCE, "Source SQL Server", AzureThemes.SQL_SERVER, "SQL Server"),
+    DatasourceTemplate("source oracle", COLOR.SOURCE, "Source Oracle", OnPremTheme.ORACLE, "Oracle"),
     # Models
-    DatasourceTemplate("model S3", COLOR.MODEL, "Model S3", AWSThemes.S3),
-    DatasourceTemplate("model rds", COLOR.MODEL, "Model RDS", AWSThemes.RDS),
-    DatasourceTemplate("model redshift", COLOR.MODEL, "Model Redshift", AWSThemes.REDSHIFT),
-    DatasourceTemplate("model dynamodb", COLOR.MODEL, "Model DynamoDB", AWSThemes.DYNAMODB),
+    DatasourceTemplate("model S3", COLOR.MODEL, "Model S3", AWSThemes.S3, "S3"),
+    DatasourceTemplate("model rds", COLOR.MODEL, "Model RDS", AWSThemes.RDS, "RDS"),
+    DatasourceTemplate("model redshift", COLOR.MODEL, "Model Redshift", AWSThemes.REDSHIFT, "Redshift"),
+    DatasourceTemplate("model dynamodb", COLOR.MODEL, "Model DynamoDB", AWSThemes.DYNAMODB, "DynamoDB"),
     # Consumers
-    DatasourceTemplate("consumer powerbi", COLOR.CONSUMER, "Consumer PowerBI", AzureThemes.POWER_BI),
-    DatasourceTemplate("consumer cube blue", COLOR.CONSUMER, "Cube", AzureThemes.CUBE_BLUE),
-    DatasourceTemplate("consumer api", COLOR.CONSUMER, "Consumer API", AzureThemes.API),
-    DatasourceTemplate("consumer sql server", COLOR.CONSUMER, "Consumer SQL Server", AzureThemes.SQL_SERVER),
+    DatasourceTemplate("consumer powerbi", COLOR.CONSUMER, "Consumer PowerBI", AzureThemes.POWER_BI, "PowerBI"),
+    DatasourceTemplate("consumer cube blue", COLOR.CONSUMER, "Cube", AzureThemes.CUBE_BLUE, "Cube"),
+    DatasourceTemplate("consumer api", COLOR.CONSUMER, "Consumer API", AzureThemes.API, "API"),
+    DatasourceTemplate(
+        "consumer sql server", COLOR.CONSUMER, "Consumer SQL Server", AzureThemes.SQL_SERVER, "SQL Server"
+    ),
 ]
 
 

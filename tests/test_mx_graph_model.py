@@ -104,7 +104,7 @@ def test_simple_shape():
 
 
 def test_datasource_shape():
-    template_detail = DatasourceTemplate("source S3", COLOR.SOURCE, "Source S3", AWSThemes.S3)
+    template_detail = DatasourceTemplate("source S3", COLOR.SOURCE, "Source S3", AWSThemes.S3, "S3")
 
     container = DatasourceContainer()
     graph_model = container.build(template_detail)
