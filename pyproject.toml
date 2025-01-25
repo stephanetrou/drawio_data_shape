@@ -1,10 +1,11 @@
 [tool.poetry]
 name = "drawio_data_shape"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["Stéphane Trou <stephane.trou@stephane.trou>"]
 readme = "README.md"
 packages = [{ include = "drawio_data_shape" }]
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.11"
