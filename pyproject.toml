@@ -1,27 +1,36 @@
-[tool.poetry]
+[project]
 name = "drawio_data_shape"
 version = "0.2.0"
 description = ""
-authors = ["Stéphane Trou <stephane.trou@stephane.trou>"]
+authors = [{ name = "Stéphane Trou", email = "stephane.trou@stephane.trou" }]
+requires-python = ">=3.11,<4"
 readme = "README.md"
-packages = [{ include = "drawio_data_shape" }]
 license = "MIT"
+dependencies = ["jinja2>=3.1.4,<4"]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-jinja2 = "^3.1.4"
+[dependency-groups]
+dev = [
+    "pytest>=8.2.0,<9",
+    "ruff>=0.4.4,<0.5",
+    "nox>=2024.4.15,<2025",
+    "deptry>=0.16.1,<0.17",
+    "pytest-cov>=4.1.0,<5",
+    "mkdocs>=1.6.0,<2",
+    "approvaltests>=8.4.1,<9",
+    "mkdocstrings>=0.25.1,<0.26",
+    "mkdocs-material>=9.5.23,<10",
+    "mypy>=1.19.0",
+]
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.2.0"
-ruff = "^0.4.4"
-mypy = "^1.10.0"
-nox = "^2024.4.15"
-deptry = "^0.16.1"
-pytest-cov = "^4.1.0"
-mkdocs = "^1.6.0"
-approvaltests = "^8.4.1"
-mkdocstrings = "^0.25.1"
-mkdocs-material = "^9.5.23"
+[tool.hatch.build.targets.sdist]
+include = ["drawio_data_shape"]
+
+[tool.hatch.build.targets.wheel]
+include = ["drawio_data_shape"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.ruff]
 line-length = 120
@@ -35,7 +44,3 @@ docstring-code-line-length = 80
 
 [tool.mypy]
 ignore_missing_imports = true
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"

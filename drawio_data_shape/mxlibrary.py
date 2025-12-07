@@ -2,7 +2,7 @@ import json
 import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any
 
 from drawio_data_shape.library_models import (
     DATASOURCES,
@@ -13,8 +13,8 @@ from drawio_data_shape.shape.datasource_container import DatasourceContainer
 from drawio_data_shape.shape.medallion import Medallion
 
 
-def map_to_library_entry(template, generator) -> Dict[str, Any]:
-    entry: Dict[str, Any] = {}
+def map_to_library_entry(template, generator) -> dict[str, Any]:
+    entry: dict[str, Any] = {}
 
     graph_model = generator.build(template)
 

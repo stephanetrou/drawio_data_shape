@@ -37,7 +37,7 @@ class OnPremTheme:
 class AzureThemes:
     API = ImageDatasource(12, 19, "img/lib/azure2/integration/API_Management_Services.svg")
     POWER_BI = ImageDatasource(20, 15, "img/lib/azure2/analytics/Power_BI_Embedded.svg")
-    CUBE_BLUE = ImageDatasource(20, 18, "img/lib/active_directory/database_cube.svg")
+    CUBE_BLUE = ImageDatasource(20, 22, "img/lib/active_directory/database_cube.svg")
     BLOB = ImageDatasource(17, 20, "img/lib/mscae/BlobBlock.svg")
     SQL_DATA_WAREHOUSE = ImageDatasource(20, 20, "img/lib/azure2/databases/SQL_Data_Warehouses.svg")
     SQL_SERVER = ImageDatasource(20, 20, "img/lib/azure2/databases/SQL_Server.svg")
